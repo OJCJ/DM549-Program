@@ -1,4 +1,6 @@
 # DM549-Program
+Hejsa! Jeg har skrevet verdens bedste program til eksamen i diskret matematik, så du ikke behøver at fedte med alle udregningerne.\
+Håber du kan bruge det til noget.
 
 ## Få programmet
 Gå til den mappe hvor du vil klone dette repository og klon det med git `git clone https://github.com/OJCJ/DM549-Program`.
