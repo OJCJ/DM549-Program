@@ -1,5 +1,5 @@
 # DM549-Program
-Hejsa! Jeg har skrevet verdens bedste program til eksamen i diskret matematik, så du ikke behøver at fedte med alle udregningerne. Så kan du bruge din dyrebare tid til eksamen på de dumme induktionsbeviser i stedet. Håber det kan bruges!
+Hejsa! Jeg har skrevet verdens bedste program til eksamen i diskret matematik, så du ikke behøver at fedte med alle udregningerne. Du kan i stedet bruge din dyrebare tid til eksamen på de dumme induktionsbeviser. Håber det kan bruges!
 
 ## Få programmet
 Gå til den mappe hvor du vil klone dette repository og klon det med git:\
