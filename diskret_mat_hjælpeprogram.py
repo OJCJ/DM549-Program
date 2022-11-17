@@ -3,10 +3,10 @@ from matematik_funktioner import *
 
 # id:[name, description, function]
 function_dict = {
-		"1":["Kongruenssystem", "For dit system af 'x=a (mod m)' kongruenser, find m, M og y værdier.", kongruenssystem],
+		"1":["Kongruenssystem", "For dit system af 'x≡a (mod m)' kongruenser, find m, M og y værdier.", kongruenssystem],
 		"2":["gcd", "Find gcd(a, b)", gcd],
 		"3":["Multiplikativ invers", "Find den multiplikative invers til a modulus m.", multiplikativ_invers],
-		"4":["Løs kongruens", "Find x for en kongruens ax=b (mod m).", løs_kongruens],
+		"4":["Løs kongruens", "Find x for en kongruens ax≡b (mod m).", løs_kongruens],
 		"5":["lcm", "Find lcm(a, b)", lcm],
 		"6":["Delelighed", "Går a op i b? Hvis man ikke lige kan regne det ud i hovedet.", delelighed]
 		}
