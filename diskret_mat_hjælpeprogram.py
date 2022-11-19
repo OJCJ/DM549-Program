@@ -1,5 +1,6 @@
 import os
-from matematik_funktioner import *
+from talteori_funktioner import *
+from matrix_funktioner import *
 
 # id:[name, description, function]
 function_dict = {
