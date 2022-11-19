@@ -86,13 +86,12 @@ def løs_kongruens():
 		x = x + 1
 
 
-
 def kongruenssystem():
 	a_list = input("Skriv dine a-værdier, separeret af mellemrum (fx. for x≡3 (mod 7) og x≡9 (mod 5), giv '3 9'):\n").strip().split(" ")
 	m_list = input("Skriv dine m-værdier, separeret af mellemrum (fx. for x≡3 (mod 7) og x≡9 (mod 5), giv '7 5'):\n").strip().split(" ")
 
 	if len(a_list) != len(m_list):
-		print("Du har ikke givet lige mange a og m værdier.")
+		print("\nDu har ikke givet lige mange a og m værdier.\n")
 		return
 
 	system_size = len(m_list)
