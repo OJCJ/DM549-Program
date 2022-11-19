@@ -66,14 +66,30 @@ def løs_kongruens():
 	m = int(input("Hvad er dit m?\n").strip())
 
 	if gcd_args(a, m) == 1:
-		print(f"For kongruensen {a}x = {b} (mod {m}) er x = {(multiplikativ_invers_args(a, m)*b)%m}")
+		print(f"\nFor kongruensen {a}x ≡ {b} (mod {m}) er x = {(multiplikativ_invers_args(a, m)*b)%m}.\n")
 		return
+
+	modulo_list = []
+
+	x = 1
+	while True:
+		length = len(modulo_list)
+		if length%2 == 0 and length > 0:
+			if modulo_list[:length//2] == modulo_list[length//2:]:
+				print("Der er ingen løsning til denne kongruens.")
+				break
+		if (a*x)%m == b:
+			print(f"Løsningen til {a}x ≡ {b} (mod {m}) er x = {x}.")
+			break
+		else:
+			modulo_list = modulo_list + [(a*x)%m]
+		x = x + 1
 
 
 
 def kongruenssystem():
-	a_list = input("Skriv dine a-værdier, separeret af mellemrum (fx. for x=3 (mod 7) og x=9 (mod 5), giv '3 9'):\n").strip().split(" ")
-	m_list = input("Skriv dine m-værdier, separeret af mellemrum (fx. for x=3 (mod 7) og x=9 (mod 5), giv '7 5'):\n").strip().split(" ")
+	a_list = input("Skriv dine a-værdier, separeret af mellemrum (fx. for x≡3 (mod 7) og x≡9 (mod 5), giv '3 9'):\n").strip().split(" ")
+	m_list = input("Skriv dine m-værdier, separeret af mellemrum (fx. for x≡3 (mod 7) og x≡9 (mod 5), giv '7 5'):\n").strip().split(" ")
 
 	if len(a_list) != len(m_list):
 		print("Du har ikke givet lige mange a og m værdier.")
@@ -116,6 +132,6 @@ def delelighed():
 	b = int(input("Hvad er dit b?\n").strip())
 
 	if b%a == 0:
-		print(f"\n{a} går op i {b}\n {b} = {b//a} * {a}\n")
+		print(f"\n{a} går op i {b}: {b} = {b//a} * {a}\n")
 	else:
-		print(f"\n{a} går ikke op i {b}.\n")
+		print(f"\n{a} går ikke op i {b}: {b} = {b//a} * {a} + {b%a}\n")
