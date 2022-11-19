@@ -31,6 +31,7 @@ def multiplikativ_invers_args(a: int, m: int) -> int:
 
 	return invers
 
+
 ############################
 ### Brugerens funktioner ###
 ############################
@@ -69,6 +70,7 @@ def løs_kongruens():
 		return
 
 
+
 def kongruenssystem():
 	a_list = input("Skriv dine a-værdier, separeret af mellemrum (fx. for x=3 (mod 7) og x=9 (mod 5), giv '3 9'):\n").strip().split(" ")
 	m_list = input("Skriv dine m-værdier, separeret af mellemrum (fx. for x=3 (mod 7) og x=9 (mod 5), giv '7 5'):\n").strip().split(" ")
@@ -90,7 +92,7 @@ def kongruenssystem():
 	
 	y_list = []
 	for i in range(system_size):
-		y_list = y_list + multiplikativ_invers_args(M_list[i], m_list[i])
+		y_list = y_list + [multiplikativ_invers_args(M_list[i], m_list[i])]
 
 	# print m
 	print(f"\nm = {' * '.join([str(m) for m in m_list])} = {m_product}\n")
@@ -107,6 +109,7 @@ def kongruenssystem():
 	x = x % m_product
 
 	print(f"\nx = {x}")
+	print(f"\nAlle x = {x} + k * {m_product}, hvor k er et hvert heltal, er også løsninger (..., {x-(2*m_product)}, {x-m_product}, {x}, {x+m_product}, {x+(2*m_product)},...).\n")
 
 def delelighed():
 	a = int(input("Hvad er dit a?\n").strip())

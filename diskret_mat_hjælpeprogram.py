@@ -8,7 +8,9 @@ function_dict = {
 		"3":["Multiplikativ invers", "Find den multiplikative invers til a modulus m.", multiplikativ_invers],
 		"4":["Løs kongruens", "Find x for en kongruens ax=b (mod m).", løs_kongruens],
 		"5":["lcm", "Find lcm(a, b)", lcm],
-		"6":["Delelighed", "Går a op i b? Hvis man ikke lige kan regne det ud i hovedet.", delelighed]
+		"6":["Delelighed", "Går a op i b? Hvis man ikke lige kan regne det ud i hovedet.", delelighed],
+		"7":["Matrix multiplikation", "Udregn resultatet af at multiplicere to matricer A og B.", matrix_multiplikation],
+		"8":["Boolsk produkt", "Udregn det boolske produkt af to matricer A og B.", boolsk_produkt]
 		}
 
 longest_name = ""
@@ -19,7 +21,7 @@ for info in function_dict.values():
 
 def clear_terminal():
 	"""
-	Rydder terminalen på win, mac, og linux. TEST PÅ MAC OG LX
+	Rydder terminalen på win, mac, og linux.
 	"""
 	command = 'clear'
 	if os.name in ('nt', 'dos'):
