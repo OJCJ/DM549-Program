@@ -102,15 +102,10 @@ def kongruenssystem():
 
 	# tjek at input m'er er gyldigt
 	for m in m_list:
-		if m == 1:
-			print("\nDu har angivet 1 som et af dine m'er, dette er ikke tilladt.\n")
+		if m < 2:
+			print(f"\nDu har angivet {m} som et af dine m'er, dette er ikke tilladt.\n")
 			return
-		if m == 0:
-			print("\nDu har angivet 0 som et af dine m'er, dette er ikke tilladt.\n")
-			return
-		if m < 0:
-			print("\nDu har angivet et negativt tal som et af dine m'er, dette er ikke tilladt.\n")
-			return
+
 		for i, m in enumerate(m_list):
 			for n in m_list[i+1:]:
 				if gcd_args(m, n) != 1:
