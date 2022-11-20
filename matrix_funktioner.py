@@ -64,11 +64,16 @@ Hvad er din matrix A?
 	B = input("Hvad er din matrix B?\n").strip()
 	B = B.split(",")
 	B = [[int(i) for i in b.split(" ")] for b in B]
-	B = transpose(B)
 
 	if not is_matrix(B):
 		print("\nDen B du har givet er ikke en matrice.\n")
 		return
+
+	if len(A[0]) != len(B):
+		print("\nDe to matricer du har givet kan ikke multipliceres.\n")
+		return
+
+	B = transpose(B)
 
 	result_matrix = []
 
@@ -105,7 +110,6 @@ Hvad er din matrix A?
 	B = input("Hvad er din matrix B?\n").strip()
 	B = B.split(",")
 	B = [[int(i) for i in b.split(" ")] for b in B]
-	print(B)	
 	B = transpose(B)
 
 	if not is_matrix(B):
@@ -126,3 +130,4 @@ Hvad er din matrix A?
 		for n in row:
 			print(f"{n} ", end="")
 		print()
+		

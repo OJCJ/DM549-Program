@@ -100,6 +100,23 @@ def kongruenssystem():
 	a_list = [int(a) for a in a_list]
 	m_list = [int(m) for m in m_list]
 
+	# tjek at input m'er er gyldigt
+	for m in m_list:
+		if m == 1:
+			print("\nDu har angivet 1 som et af dine m'er, dette er ikke tilladt.\n")
+			return
+		if m == 0:
+			print("\nDu har angivet 0 som et af dine m'er, dette er ikke tilladt.\n")
+			return
+		if m < 0:
+			print("\nDu har angivet et negativt tal som et af dine m'er, dette er ikke tilladt.\n")
+			return
+		for i, m in enumerate(m_list):
+			for n in m_list[i+1:]:
+				if gcd_args(m, n) != 1:
+					print(f"\nDu har angivet m'er ({m} og {n}) som ikke er relativt primiske, dette er ikke tilladt.\n")
+					return
+
 	# udregn m, M'er og y'er
 	m_product = reduce(lambda x, y : x*y, m_list, 1)
 
