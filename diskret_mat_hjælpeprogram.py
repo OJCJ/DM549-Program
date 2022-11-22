@@ -22,7 +22,7 @@ for info in function_dict.values():
 
 def clear_terminal():
 	"""
-	Rydder terminalen på win, mac, og linux.
+	Rydder terminalen på win, mac, og linux. (Testet på win 10/11, mac og ubuntu)
 	"""
 	command = 'clear'
 	if os.name in ('nt', 'dos'):

@@ -7,6 +7,9 @@ def gcd_args(m: int, n: int) -> int:
 	""" Finder gcdmed argumenter i stedet for brugerinput.
 	Bruges når andre udregninger skal bruge gcd af to tal.
 	"""
+	m = abs(m)
+	n = abs(n)
+
 	while m != n:
 		if m < n:
 			n -= m
@@ -21,13 +24,9 @@ def multiplikativ_invers_args(a: int, m: int) -> int:
 	Bruges når andre udregninger skal bruge gcd af to tal.
 	"""
 	invers = 1
-	j = 1
 
-	while invers*a-j*m != 1:
-		if invers*a < j*m:
-			invers = invers + 1
-		else:
-			j = j + 1
+	while (invers*a) % m != 1:
+		invers = invers + 1
 
 	return invers
 
@@ -103,13 +102,13 @@ def kongruenssystem():
 	# tjek at input m'er er gyldigt
 	for m in m_list:
 		if m < 2:
-			print(f"\nDu har angivet {m} som et af dine m'er, dette er ikke tilladt.\n")
+			print(f"\nDu har angivet {m} som et af dine m'er, dette er ikke defineret.\n")
 			return
 
-		for i, m in enumerate(m_list):
+		for i, m in enumerate(m_list[:-1]):
 			for n in m_list[i+1:]:
 				if gcd_args(m, n) != 1:
-					print(f"\nDu har angivet m'er ({m} og {n}) som ikke er relativt primiske, dette er ikke tilladt.\n")
+					print(f"\nDu har angivet m'er ({m} og {n}) som ikke er relativt primiske, dette er ikke defineret.\n")
 					return
 
 	# udregn m, M'er og y'er
