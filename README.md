@@ -14,4 +14,4 @@ Herefter er der instruktioner du kan følge i programmet.
 
 
 ## Kendte problemer (med matematikken)
-Ingen lige nu. Giv gerne lyd hvis i finder noget der er galt matematisk eller f.eks. programmet kører ugendeligt ved et givet input.
+Ingen lige nu. Giv gerne lyd hvis i finder noget der er galt matematisk eller f.eks. programmet kører uendeligt ved et givet input.
