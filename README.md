@@ -1,4 +1,8 @@
 # DM549-Program
+
+## Kendte problemer (med matematikken)
+Ingen lige nu. Giv gerne lyd hvis i finder noget.
+
 Hejsa! Jeg har skrevet verdens bedste program til eksamen i diskret matematik, så du ikke behøver at fedte med alle udregningerne. Du kan i stedet bruge din dyrebare tid til eksamen på de dumme induktionsbeviser. Håber det kan bruges!
 
 ## Få programmet
