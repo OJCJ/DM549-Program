@@ -93,6 +93,10 @@ def kongruenssystem():
 		print("\nDu har ikke givet lige mange a og m værdier.\n")
 		return
 
+	if len(a_list) == 1:
+		print("\nDu skal angive mere end én kongruens i dit system (brug funktion 4 i stedet).\n")
+		return
+
 	system_size = len(m_list)
 
 	# konvertere liste elementer til int
