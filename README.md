@@ -14,7 +14,8 @@ Herefter er der instruktioner du kan følge i programmet.
 
 
 ## Kendte problemer (med matematikken)
-Kongruenssystem funktionen virker ikke hvis m-værdierne ikke er relativt primiske.
+Kongruenssystem funktionen virker ikke hvis m-værdierne ikke er relativt primiske.\
+De fleste talteori-funktioner kører for evigt hvis man giver 0 som input (i hvert fals som sit a).
 
 
 Giv gerne lyd hvis i finder noget der er galt matematisk eller f.eks. programmet kører for evigt ved et givet input.
