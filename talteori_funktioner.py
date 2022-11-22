@@ -38,7 +38,7 @@ def gcd() -> None:
 	a = int(input("Hvad er dit a?\n").strip())
 	b = int(input("Hvad er dit b?\n").strip())
 
-	print(f"gcd({a}, {b}) = {gcd_args(a, b)}")
+	print(f"\ngcd({a}, {b}) = {gcd_args(a, b)}\n")
 
 
 def lcm() -> None:
@@ -53,7 +53,7 @@ def multiplikativ_invers():
 	m = int(input("Hvad er dit m?\n").strip())
 
 	if gcd_args(a, m) != 1:
-		print(f"{a} og {m} er ikke relativt primiske så der findes ikke en mulitplikativ invers til {a} modulus {m}.")
+		print(f"\n{a} og {m} er ikke relativt primiske så der findes ikke en mulitplikativ invers til {a} modulus {m}.\n")
 		return
 
 	print(f"\nDen multiplikative invers til {a} modulus {m} er {multiplikativ_invers_args(a, m)}.\n")
@@ -75,10 +75,10 @@ def løs_kongruens():
 		length = len(modulo_list)
 		if length%2 == 0 and length > 0:
 			if modulo_list[:length//2] == modulo_list[length//2:]:
-				print("Der er ingen løsning til denne kongruens.")
+				print("\nDer er ingen løsning til denne kongruens.\n")
 				break
 		if (a*x)%m == b:
-			print(f"Løsningen til {a}x ≡ {b} (mod {m}) er x = {x}.")
+			print(f"\nLøsningen til {a}x ≡ {b} (mod {m}) er x = {x}.\n")
 			break
 		else:
 			modulo_list = modulo_list + [(a*x)%m]
@@ -145,3 +145,19 @@ def delelighed():
 		print(f"\n{a} går op i {b}: {b} = {b//a} * {a}\n")
 	else:
 		print(f"\n{a} går ikke op i {b}: {b} = {b//a} * {a} + {b%a}\n")
+
+
+def primtal():
+	x = int(input("Hvad er dit x?\n").strip())
+
+	divisors = []
+
+	for i in range(1, x):
+		if x%i == 0:
+			divisors = divisors + [i]
+
+	if len(divisors) > 1:
+		print(f"\n{x} er ikke et primtal, da følgende tal går op i det:\n\t{', '.join([str(i) for i in divisors])}\n")
+		return
+	else:
+		print(f"\n{x} er et primtal\n")

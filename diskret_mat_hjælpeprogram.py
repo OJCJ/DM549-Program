@@ -10,8 +10,9 @@ function_dict = {
 		"4":["Løs kongruens", "Find x for en kongruens ax≡b (mod m).", løs_kongruens],
 		"5":["lcm", "Find lcm(a, b)", lcm],
 		"6":["Delelighed", "Går a op i b? Hvis man ikke lige kan regne det ud i hovedet.", delelighed],
-		"7":["Matrix multiplikation", "Udregn resultatet af at multiplicere to matricer A og B.", matrix_multiplikation],
-		"8":["Boolsk produkt", "Udregn det boolske produkt af to matricer A og B.", boolsk_produkt]
+		"7":["Primtal", "Er x et primtal?", primtal],
+		"8":["Matrix multiplikation", "Udregn resultatet af at multiplicere to matricer A og B.", matrix_multiplikation],
+		"9":["Boolsk produkt", "Udregn det boolske produkt af to matricer A og B.", boolsk_produkt]
 		}
 
 longest_name = ""
