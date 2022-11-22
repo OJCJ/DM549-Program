@@ -4,7 +4,7 @@ from functools import reduce
 ### Hjælpefunktioner ###
 ########################
 def gcd_args(m: int, n: int) -> int:
-	""" Finder gcdmed argumenter i stedet for brugerinput.
+	""" Finder gcd med argumenter i stedet for brugerinput.
 	Bruges når andre udregninger skal bruge gcd af to tal.
 	"""
 	m = abs(m)
@@ -18,6 +18,13 @@ def gcd_args(m: int, n: int) -> int:
 
 	return m
 
+def lcm_list(v: list[int]) -> int:
+	""" Finder det lcm for en liste af et vilkårligt antal værdier.
+	"""
+	lcm = v[0]
+	for i in range(1, len(v)):
+		lcm = lcm*v[i]//gcd_args(lcm, v[i])
+	return lcm
 
 def multiplikativ_invers_args(a: int, m: int) -> int:
 	""" Finder den mulitplikative med argumenter i stedet for brugerinput.
@@ -103,6 +110,8 @@ def kongruenssystem():
 	a_list = [int(a) for a in a_list]
 	m_list = [int(m) for m in m_list]
 
+	chinese_method = True
+
 	# tjek at input m'er er gyldigt
 	for m in m_list:
 		if m < 2:
@@ -112,34 +121,43 @@ def kongruenssystem():
 		for i, m in enumerate(m_list[:-1]):
 			for n in m_list[i+1:]:
 				if gcd_args(m, n) != 1:
-					print(f"\nDu har angivet m'er ({m} og {n}) som ikke er relativt primiske, dette er ikke defineret.\n")
-					return
+					chinese_method = False
 
-	# udregn m, M'er og y'er
-	m_product = reduce(lambda x, y : x*y, m_list, 1)
+	if chinese_method: # use chinese remainder theorem
+		# udregn m, M'er og y'er
+		m_product = reduce(lambda x, y : x*y, m_list, 1)
 
-	M_list = [m_product//m0 for m0 in m_list]
+		M_list = [m_product//m0 for m0 in m_list]
 	
-	y_list = []
-	for i in range(system_size):
-		y_list = y_list + [multiplikativ_invers_args(M_list[i], m_list[i])]
+		y_list = []
+		for i in range(system_size):
+			y_list = y_list + [multiplikativ_invers_args(M_list[i], m_list[i])]
 
-	# print m
-	print(f"\nm = {' * '.join([str(m) for m in m_list])} = {m_product}\n")
+		# print m
+		print(f"\nm = {' * '.join([str(m) for m in m_list])} = {m_product}\n")
 
-	# print m_k, M_k, y_k
-	for i in range(system_size):
-		print(f"m_{i+1}={m_list[i]}, M_{i+1}={M_list[i]}, y_{i+1}={y_list[i]}")
+		# print m_k, M_k, y_k
+		for i in range(system_size):
+			print(f"m_{i+1}={m_list[i]}, M_{i+1}={M_list[i]}, y_{i+1}={y_list[i]}")
 
-	# print x
-	x = 0
-	for i in range(system_size):
-		x = x + (a_list[i]*M_list[i]*y_list[i])
+		# print x
+		x = 0
+		for i in range(system_size):
+			x = x + (a_list[i]*M_list[i]*y_list[i])
 
-	x = x % m_product
+		x = x % m_product
+		print(f"\nx = {x}")
+		print(f"\nAlle x = {x} + k * {m_product}, hvor k er et hvert heltal, er også løsninger (..., {x-(2*m_product)}, {x-m_product}, {x}, {x+m_product}, {x+(2*m_product)},...).\n")
+	
+	else:
+		for x in range(1, lcm_list(m_list)+1):
+			solution_found = [(x % m_list[i]) == a_list[i] for i in range(len(a_list))]
+			solution_found = reduce(lambda a, b: a and b, solution_found, True)
 
-	print(f"\nx = {x}")
-	print(f"\nAlle x = {x} + k * {m_product}, hvor k er et hvert heltal, er også løsninger (..., {x-(2*m_product)}, {x-m_product}, {x}, {x+m_product}, {x+(2*m_product)},...).\n")
+			if solution_found:
+				print(f"\nx = {x}\n")
+				return
+		print(f"\nDer er ingen løsning til dit kongruenssystem.\n")
 
 def delelighed():
 	a = int(input("Hvad er dit a?\n").strip())
