@@ -1,3 +1,5 @@
+# TODO: Implement squaring shortcut in matrix function
+
 from functools import reduce
 
 ########################
@@ -39,7 +41,7 @@ def matrix_single_boolean_product(v: list[int], w: list[int]) -> list[int]:
 	>>> matrix_single_multiplication([1, 2, 3, 4], [1, 2, 3, 4])
 	30
 	"""
-	return sum([a and b for (a, b) in zip(v, w)]) > 0
+	return int(sum([a and b for (a, b) in zip(v, w)]) > 0)
 
 ############################
 ### Brugerens funktioner ###
@@ -121,7 +123,7 @@ Hvad er din matrix A?
 	for a in A:
 		row = []
 		for b in B:
-			row = row + [matrix_single_multiplication(a, b)]
+			row = row + [matrix_single_boolean_product(a, b)]
 		result_matrix = result_matrix + [row]
 
 	print("\nDit boolske produkt af A og B =")
