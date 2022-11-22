@@ -11,3 +11,7 @@ Den fil du skal køre er diskret_mat_hjælpeprogram.py, og du skal køre det i t
 *Mac/Linux*: `python3 diskret_mat_hjælpeprogram.py`
 
 Herefter er der instruktioner du kan følge i programmet.
+
+
+## Kendte problemer (med matematikken)
+Ingen lige nu. Giv gerne lyd hvis i finder noget der er galt matematisk eller f.eks. programmet kører for evigt ved et givet input.
