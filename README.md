@@ -14,7 +14,7 @@ Herefter er der instruktioner du kan følge i programmet.
 
 
 ## Kendte problemer (med matematikken)
-De fleste talteori-funktioner kører for evigt hvis man giver 0 som input (i hvert fals som sit a).
+De fleste talteori-funktioner kører for evigt hvis man giver 0 som input (i hvert fald som a-værdi(er)).
 
 
 Giv gerne lyd hvis i finder noget der er galt matematisk eller f.eks. programmet kører for evigt ved et givet input.
