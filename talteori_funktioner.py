@@ -37,11 +37,25 @@ def multiplikativ_invers_args(a: int, m: int) -> int:
 
 	return invers
 
+def is_prime(x: int) -> bool:
+	""" Returnerer om x er et primtal.
+	"""
+	divisors = []
+
+	for i in range(1, x+1):
+		if x%i == 0:
+			divisors = divisors + [i]
+
+	return len(divisors) == 2
+
 
 ############################
 ### Brugerens funktioner ###
 ############################
 def gcd() -> None:
+	""" Brugerens funktion til at finde den største fælles divisor
+	for tallene a og b.
+	"""
 	a = int(input("Hvad er dit a?\n").strip())
 	b = int(input("Hvad er dit b?\n").strip())
 
@@ -49,13 +63,19 @@ def gcd() -> None:
 
 
 def lcm() -> None:
+	""" Brugerens funktion til at finde det mindste fælles multiplum
+	for tallene a og b.
+	"""
 	a = int(input("Hvad er dit a?\n").strip())
 	b = int(input("Hvad er dit b?\n").strip())
 	
 	print(f"\nlcm({a}, {b}) = {abs(a*b)//gcd_args(a, b)}\n")
 
 
-def multiplikativ_invers():
+def multiplikativ_invers() -> None:
+	""" Brugerens funktion til at finde den multiplikative invers
+	til a modulus m.
+	"""
 	a = int(input("Hvad er dit a?\n").strip())
 	m = int(input("Hvad er dit m?\n").strip())
 
@@ -66,17 +86,30 @@ def multiplikativ_invers():
 	print(f"\nDen multiplikative invers til {a} modulus {m} er {multiplikativ_invers_args(a, m)}.\n")
 
 
-def løs_kongruens():
+def løs_kongruens() -> None:
+	""" Brugerens funktion til at løse en kongruens.
+	"""
 	a = int(input("Hvad er dit a?\n").strip())
 	b = int(input("Hvad er dit b?\n").strip())
 	m = int(input("Hvad er dit m?\n").strip())
 
+	# hvis a og m er relativt primiske kan den multiplikative invers bruges
 	if gcd_args(a, m) == 1:
 		print(f"\nFor kongruensen {a}x ≡ {b} (mod {m}) er x = {(multiplikativ_invers_args(a, m)*b)%m}.\n")
 		return
 
 	modulo_list = []
 
+	"""
+	Hvis a og m ikke er relativt primiske er det kun måske der findes en løsning.
+	Den eneste måde at vide om der ikke kommer en løsning er ved at tjekke om et
+	mønster af rester kommer. Eksempelvis for 4x≡3 (mod 10) hvor mønstret for
+	modulo-værdierne er 0, 4, 8, 2, 6 og det gentager sig igen og igen, så der
+	er ingen måde at få 3. Derfor gemmes modulo resultaterne og der tjekkes om
+	den første og anden halvdel er ens. For eksemplet ovenfor ville det kunne
+	siges at der ikke er en løsning når listen er [4, 8, 2, 6, 0, 4, 8, 2, 6, 0].
+	Ellers tjekker den bare x-værdier en ad gangen fra 1 og op.
+	"""
 	x = 1
 	while True:
 		length = len(modulo_list)
@@ -92,7 +125,10 @@ def løs_kongruens():
 		x = x + 1
 
 
-def kongruenssystem():
+def kongruenssystem() -> None:
+	""" Brugerens funktion til at finde den mindste (og nogle gange flere)
+	løsninger til et system af kongruenser.
+	"""
 	a_list = input("Skriv dine a-værdier, separeret af mellemrum (fx. for x≡3 (mod 7) og x≡9 (mod 5), giv '3 9'):\n").strip().split(" ")
 	m_list = input("Skriv dine m-værdier, separeret af mellemrum (fx. for x≡3 (mod 7) og x≡9 (mod 5), giv '7 5'):\n").strip().split(" ")
 
@@ -118,12 +154,14 @@ def kongruenssystem():
 			print(f"\nDu har angivet {m} som et af dine m'er, dette er ikke defineret.\n")
 			return
 
-		for i, m in enumerate(m_list[:-1]):
-			for n in m_list[i+1:]:
-				if gcd_args(m, n) != 1:
-					chinese_method = False
+	# tjekke om den kinesiske restklasse sætning skal bruges.
+	# hvis alle m'er er parvist relativt primiske skal den.
+	for i, m in enumerate(m_list[:-1]):
+		for n in m_list[i+1:]:
+			if gcd_args(m, n) != 1:
+				chinese_method = False
 
-	if chinese_method: # use chinese remainder theorem
+	if chinese_method: # brug den kinesiske restklasse sætning
 		# udregn m, M'er og y'er
 		m_product = reduce(lambda x, y : x*y, m_list, 1)
 
@@ -140,18 +178,25 @@ def kongruenssystem():
 		for i in range(system_size):
 			print(f"m_{i+1}={m_list[i]}, M_{i+1}={M_list[i]}, y_{i+1}={y_list[i]}")
 
-		# print x
+		# udregn x
 		x = 0
 		for i in range(system_size):
 			x = x + (a_list[i]*M_list[i]*y_list[i])
 
-		x = x % m_product
+		x = x % m_product # reducer x til det mindste mulige
+
+		# print x
 		print(f"\nx = {x}")
 		print(f"\nAlle x = {x} + k * {m_product}, hvor k er et hvert heltal, er også løsninger (..., {x-(2*m_product)}, {x-m_product}, {x}, {x+m_product}, {x+(2*m_product)},...).\n")
 	
-	else:
+	else: # hvis den kinesiske restklasse sætning kan bruges
+		"""
+		her benyttes det faktum at hvis der findes en løsning, findes der en løsning
+		der ligger mellem 1 og det mindste fælles multiplum af m'erne (se slide 11 i "Noter uge 44-1").
+		derfor behøver værdier i det interval kun tjekkes, og hvis der ikke er en løsning, er der slet ikke en.
+		"""
 		for x in range(1, lcm_list(m_list)+1):
-			solution_found = [(x % m_list[i]) == a_list[i] for i in range(len(a_list))]
+			solution_ = [(x % m_list[i]) == a_list[i] for i in range(len(a_list))]
 			solution_found = reduce(lambda a, b: a and b, solution_found, True)
 
 			if solution_found:
@@ -159,7 +204,10 @@ def kongruenssystem():
 				return
 		print(f"\nDer er ingen løsning til dit kongruenssystem.\n")
 
-def delelighed():
+
+def delelighed() -> None:
+	""" Brugerens funktion til at finde ud af om a går op i b.
+	"""
 	a = int(input("Hvad er dit a?\n").strip())
 	b = int(input("Hvad er dit b?\n").strip())
 
@@ -169,16 +217,12 @@ def delelighed():
 		print(f"\n{a} går ikke op i {b}: {b} = {b//a} * {a} + {b%a}\n")
 
 
-def primtal():
+def primtal() -> None:
+	""" Brugerens funktion til at finde ud af om x er et primtal.
+	"""
 	x = int(input("Hvad er dit x?\n").strip())
 
-	divisors = []
-
-	for i in range(1, x):
-		if x%i == 0:
-			divisors = divisors + [i]
-
-	if len(divisors) > 1:
+	if is_prime(x):
 		print(f"\n{x} er ikke et primtal, da følgende tal går op i det:\n\t{', '.join([str(i) for i in divisors])}\n")
 		return
 	else:
