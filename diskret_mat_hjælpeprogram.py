@@ -21,7 +21,7 @@ for info in function_dict.values():
 	if len(name) > len(longest_name):
 		longest_name = name
 
-def clear_terminal():
+def clear_terminal() -> None:
 	"""
 	Rydder terminalen på win, mac, og linux. (Testet på win 10/11, mac og ubuntu)
 	"""
@@ -30,11 +30,10 @@ def clear_terminal():
 		command = 'cls'
 	os.system(command)
 
-def print_functions():
+def print_functions() -> None:
 	""" Printer funktionerne brugeren kan bruge i
 	formattet -> id navn:	 beskrivelse.
 	"""
-	#print("Kommandoer:")
 	print("-"*100)
 	for f in function_dict.keys():
 		print(f.ljust(3), function_dict[f][0], ":".ljust(6+len(longest_name)-len(function_dict[f][0])), function_dict[f][1], sep="")
@@ -50,5 +49,4 @@ while running:
 		function_dict[cmd][2]()
 		input("Tryk enter for at vælge en ny kommando (bemærk: dette sletter dit sidste resultat).")
 	else:
-		print("Ups, det er ikke en valid kommando. Tryk enter for at prøve igen :)")
-		input()
+		input("Ups, det er ikke en valid kommando. Tryk enter for at prøve igen :)")
