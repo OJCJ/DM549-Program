@@ -38,15 +38,15 @@ def matrix_single_multiplication(v: list[int], w: list[int]) -> list[int]:
 def matrix_single_boolean_product(v: list[int], w: list[int]) -> list[int]:
 	""" Udfører boolsk product for en enkelt plads i en matrix,
 	hvor v er rækken fra den ene og w søjlen fra den anden.
-	>>> matrix_single_multiplication([1, 2, 3, 4], [1, 2, 3, 4])
-	30
+	>>> matrix_single_multiplication([1, 0, 0, 1], [0, 0, 1, 1])
+	1
 	"""
-	return int(sum([a and b for (a, b) in zip(v, w)]) > 0)
+	return reduce(lambda x, y: x or y, [a and b for (a, b) in zip(v, w)], False)
 
 ############################
 ### Brugerens funktioner ###
 ############################
-def matrix_multiplikation():
+def matrix_multiplikation() -> None:
 	A = input('''Angiv matricer sådan at hvis dette var din matrix
 \t1 2 3
 \t4 5 6
@@ -93,7 +93,7 @@ Hvad er din matrix A?
 		print()
 
 
-def boolsk_produkt():
+def boolsk_produkt() -> None:
 	A = input('''Angiv matricer sådan at hvis dette var din matrix
 \t1 0 0
 \t1 0 1
