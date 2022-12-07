@@ -1,6 +1,7 @@
 import os
 from talteori_funktioner import *
 from matrix_funktioner import *
+from tælleteknikker_funktioner import *
 
 # id:[name, description, function]
 function_dict = {
@@ -12,7 +13,10 @@ function_dict = {
 		"6":["Delelighed", "Går a op i b? Hvis man ikke lige kan regne det ud i hovedet.", delelighed],
 		"7":["Primtal", "Er x et primtal?", primtal],
 		"8":["Matrix multiplikation", "Udregn resultatet af at multiplicere to matricer A og B.", matrix_multiplikation],
-		"9":["Boolsk produkt", "Udregn det boolske produkt af to matricer A og B.", boolsk_produkt]
+		"9":["Boolsk produkt", "Udregn det boolske produkt af to matricer A og B.", boolsk_produkt],
+		"10":["Permutationer", "Udregn P(n, r).", permutationer],
+		"11":["Kombinationer", "Udregn C(n, r); n choose r.", kombinationer],
+		"12":["Pascals trekant række", "Find den n'de række af Pascals trekant.", pascal_række]
 		}
 
 longest_name = ""

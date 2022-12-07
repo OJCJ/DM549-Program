@@ -1,5 +1,3 @@
-# TODO: Implement squaring shortcut in matrix function
-
 from functools import reduce
 
 ########################
@@ -27,6 +25,7 @@ def transpose(m: list[list]) -> list[list]:
 	return [[m[column][row] for column in range(len(m))]
 			for row in range(len(m[0]))]
 
+
 def matrix_single_multiplication(v: list[int], w: list[int]) -> list[int]:
 	""" Udfører multiplikationen for en enkelt plads i en matrix,
 	hvor v er rækken fra den ene og w søjlen fra den anden.
@@ -34,6 +33,7 @@ def matrix_single_multiplication(v: list[int], w: list[int]) -> list[int]:
 	30
 	"""
 	return sum([a*b for (a, b) in zip(v, w)])
+
 
 def matrix_single_boolean_product(v: list[int], w: list[int]) -> list[int]:
 	""" Udfører boolsk product for en enkelt plads i en matrix,
@@ -47,6 +47,8 @@ def matrix_single_boolean_product(v: list[int], w: list[int]) -> list[int]:
 ### Brugerens funktioner ###
 ############################
 def matrix_multiplikation() -> None:
+	""" Brugerens funktion til at multiplicerer to matricer.
+	"""
 	A = input('''Angiv matricer sådan at hvis dette var din matrix
 \t1 2 3
 \t4 5 6
@@ -56,21 +58,27 @@ skulle du skrive "1 2 3,4 5 6,7 8 9."
 Hvad er din matrix A?
 ''').strip()
 
+	# Lave input om til en liste af tal
 	A = A.split(",")
 	A = [[int(i) for i in a.split(" ")] for a in A]
 
+	# Tjekke om A er en matrice
 	if not is_matrix(A):
 		print("\nDen A du har givet er ikke en matrice.\n")
 		return
 
 	B = input("Hvad er din matrix B?\n").strip()
+
+	# Lave input om til en liste af tal
 	B = B.split(",")
 	B = [[int(i) for i in b.split(" ")] for b in B]
 
+	# Tjekke om B er en matrice
 	if not is_matrix(B):
 		print("\nDen B du har givet er ikke en matrice.\n")
 		return
 
+	# Tjek at A har ligeså mange rækker som B har søjler
 	if len(A[0]) != len(B):
 		print("\nDe to matricer du har givet kan ikke multipliceres.\n")
 		return
@@ -94,6 +102,9 @@ Hvad er din matrix A?
 
 
 def boolsk_produkt() -> None:
+	""" Brugerens funktion til at tage det boolske produkt af
+	to matricer.
+	"""
 	A = input('''Angiv matricer sådan at hvis dette var din matrix
 \t1 0 0
 \t1 0 1
@@ -102,21 +113,31 @@ skulle du skrive "1 0 0,1 0 1,0 1 1."
 
 Hvad er din matrix A?
 ''').strip()
+	# Lave input om til en liste af tal
 	A = A.split(",")
 	A = [[int(i) for i in a.split(" ")] for a in A]
 
+	# Tjekke om A er en matrice
 	if not is_matrix(A):
 		print("\nDen A du har givet er ikke en matrice.\n")
 		return
 
 	B = input("Hvad er din matrix B?\n").strip()
+	# Lave input om til en liste af tal
 	B = B.split(",")
 	B = [[int(i) for i in b.split(" ")] for b in B]
-	B = transpose(B)
 
+	# Tjekke om B er en matrice
 	if not is_matrix(B):
 		print("\nDen B du har givet er ikke en matrice.\n")
 		return
+
+	# Tjekke at A og B er en matrice
+	if dimensions(A) != dimensions(B):
+		print("\nA og B er ikke samme størrelse.\n")
+		return
+		
+	B = transpose(B)
 
 	result_matrix = []
 
