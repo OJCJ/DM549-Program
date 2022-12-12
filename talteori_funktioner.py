@@ -49,6 +49,18 @@ def is_prime(x: int) -> bool:
 	return len(divisors) == 2
 
 
+def divisors(x: int) -> list[int]:
+	""" Returnerer om x er et primtal.
+	"""
+	divisors = []
+
+	for i in range(2, x):
+		if x%i == 0:
+			divisors = divisors + [i]
+
+	return divisors
+
+
 ############################
 ### Brugerens funktioner ###
 ############################
@@ -222,8 +234,8 @@ def primtal() -> None:
 	"""
 	x = int(input("Hvad er dit x?\n").strip())
 
-	if is_prime(x):
-		print(f"\n{x} er ikke et primtal, da følgende tal går op i det:\n\t{', '.join([str(i) for i in divisors])}\n")
+	if not is_prime(x):
+		print(f"\n{x} er ikke et primtal, da følgende tal går op i det:\n\t{', '.join([str(i) for i in divisors(x)])}\n")
 		return
 	else:
 		print(f"\n{x} er et primtal\n")
