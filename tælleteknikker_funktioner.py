@@ -52,16 +52,30 @@ def permutationer() -> None:
 	n = int(input("Hvad er dit n?\n").strip())
 	r = int(input("Hvad er dit r?\n").strip())
 
-	print(f"\nP({n}, {r}) = {permutations_calc(n, r)}\n")
+	rep = input("Er det med repititioner (y/n)?\t(ikke det samme som indistinguishability)\n")
+
+	if rep == 'y':
+		print(f"\n{n}^{r} = {n**r}\n")
+
+	elif rep == 'n':
+		print(f"\nP({n}, {r}) = {permutations_calc(n, r)}\n")
 
 
 def kombinationer() -> None:
 	""" Brugerens funktion til at finde C(n, r).
 	"""
-	n = int(input("Hvad er dit n?\n").strip())
-	r = int(input("Hvad er dit r?\n").strip())
+	n = int(input("Hvor mange objekter er der?\n").strip())
+	r = int(input("Hvor mange kasser er der?\n").strip())
 
-	print(f"\nC({n}, {r}) = {combinations_calc(n, r)}\n")
+	rep = input("Er det med repititioner (y/n)?\n")
+	
+	if rep == 'y':
+		types = int(input("Hvor mange typer objekter er der?\n").strip())
+
+		print(f"\nC({n}+{r}-1, {types-1}) = {combinations_calc(n+r-1, types-1)}\n")
+
+	elif rep == 'n':
+		print(f"\nC({n}, {r}) = {combinations_calc(n, r)}\n")
 
 
 def pascals_trekant():
@@ -84,3 +98,26 @@ def pascals_trekant():
 
 	if mode == "r":
 		print(f"\nDen {n}'de række i Pascals trekant er:\n\n{' '.join([str(i) for i in pascal_calc(n)])}\n")
+
+
+def distinguishability() -> None:
+	""" Brugerens funktion til at udregne måder at fordele
+	n objekter i k kasser, afhængigt af distinguishability.
+	"""
+	n = int(input("Hvor mange objekter er der?\n").strip())
+	k = int(input("Hvor mange kasser er der?\n").strip())
+
+	objects_dis = input("Er objekterne distinguishable? (y/n)\n").strip()
+
+	if objects_dis not in ["y", "n"]:
+		print("Ugyldigt svar på distinguishability, svar y eller n.")
+		return
+
+	boxes_dis = input("Er kasserne distinguishable? (y/n)\n").strip()
+
+	if boxes_dis not in ["y", "n"]:
+		print("Ugyldigt svar på distinguishability, svar y eller n.")
+		return
+
+	if objects_dis == "n" and boxes_dis == "y":
+		print(f"\nDer er {combinations_calc(n+k-1, k)} måder at fordele {n} indistinguishable objekter i {k} distinguishable kasser.\n")

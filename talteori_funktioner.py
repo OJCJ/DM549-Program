@@ -203,7 +203,7 @@ def kongruenssystem() -> None:
 	
 	else: # hvis den kinesiske restklasse sætning kan bruges
 		"""
-		her benyttes det faktum at hvis der findes en løsning, findes der en løsning
+		her benyttes det faktum at hvis der findes en løsning, findes der altid en løsning
 		der ligger mellem 1 og det mindste fælles multiplum af m'erne (se slide 11 i "Noter uge 44-1").
 		derfor behøver værdier i det interval kun tjekkes, og hvis der ikke er en løsning, er der slet ikke en.
 		"""

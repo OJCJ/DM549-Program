@@ -16,7 +16,8 @@ function_dict = {
 		"9":["Boolsk produkt", "Udregn det boolske produkt af to matricer A og B.", boolsk_produkt],
 		"10":["Permutationer", "Udregn P(n, r).", permutationer],
 		"11":["Kombinationer", "Udregn C(n, r); n choose r.", kombinationer],
-		"12":["Pascals trekant", "Find en eller flere rækker af Pascals trekant.", pascals_trekant]
+		"12":["Pascals trekant", "Find en eller flere rækker af Pascals trekant.", pascals_trekant],
+		"12":["Distinguishability", "Udregn måder at fordele n objekter i k kasser, afhængigt af distinguishability.", distinguishability]
 		}
 
 longest_name = ""
