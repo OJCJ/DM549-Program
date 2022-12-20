@@ -26,7 +26,7 @@ def transpose(m: list[list]) -> list[list]:
 			for row in range(len(m[0]))]
 
 
-def matrix_single_multiplication(v: list[int], w: list[int]) -> list[int]:
+def matrix_single_multiplication(v: list[int], w: list[int]) -> int:
 	""" Udfører multiplikationen for en enkelt plads i en matrix,
 	hvor v er rækken fra den ene og w søjlen fra den anden.
 	>>> matrix_single_multiplication([1, 2, 3, 4], [1, 2, 3, 4])
@@ -35,13 +35,13 @@ def matrix_single_multiplication(v: list[int], w: list[int]) -> list[int]:
 	return sum([a*b for (a, b) in zip(v, w)])
 
 
-def matrix_single_boolean_product(v: list[int], w: list[int]) -> list[int]:
+def matrix_single_boolean_product(v: list[int], w: list[int]) -> bool:
 	""" Udfører boolsk product for en enkelt plads i en matrix,
 	hvor v er rækken fra den ene og w søjlen fra den anden.
 	>>> matrix_single_multiplication([1, 0, 0, 1], [0, 0, 1, 1])
 	1
 	"""
-	return reduce(lambda x, y: x or y, [a and b for (a, b) in zip(v, w)], False)
+	return reduce(lambda x, y: bool(x) or bool(y), [a and b for (a, b) in zip(v, w)], False)
 
 ############################
 ### Brugerens funktioner ###
