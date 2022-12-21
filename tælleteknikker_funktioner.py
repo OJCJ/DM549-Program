@@ -70,9 +70,9 @@ def kombinationer() -> None:
 	rep = input("Er det med repititioner (y/n)?\n")
 	
 	if rep == 'y':
-		types = int(input("Hvor mange typer objekter er der?\n").strip())
+		#types = int(input("Hvor mange typer objekter er der?\n").strip())
 
-		print(f"\nC({n}+{r}-1, {types-1}) = {combinations_calc(n+r-1, types-1)}\n")
+		print(f"\nC({n}+{r}-1, {n}) = {combinations_calc(n+r-1, n)}\n")
 
 	elif rep == 'n':
 		print(f"\nC({n}, {r}) = {combinations_calc(n, r)}\n")
@@ -96,7 +96,7 @@ def pascals_trekant():
 		
 		print(pascal_triangle(n))
 
-	if mode == "r":
+	elif mode == "r":
 		print(f"\nDen {n}'de række i Pascals trekant er:\n\n{' '.join([str(i) for i in pascal_calc(n)])}\n")
 
 
@@ -119,5 +119,29 @@ def distinguishability() -> None:
 		print("Ugyldigt svar på distinguishability, svar y eller n.")
 		return
 
+	# Distinguishable objekter i indistinguishable kasser
 	if objects_dis == "n" and boxes_dis == "y":
-		print(f"\nDer er {combinations_calc(n+k-1, k)} måder at fordele {n} indistinguishable objekter i {k} distinguishable kasser.\n")
+		print(f"\nDer er {combinations_calc(n+k-1, n)} måder at fordele {n} indistinguishable objekter i {k} distinguishable kasser.\n")
+
+	# Indistinguishable objekter i distinguishable kasser
+	elif objects_dis == "y" and boxes_dis == "n":
+		
+		supersum = 0
+
+		for j in range(1, k+1):
+			subsum = 0
+
+			for i in range(j):
+				subsum = subsum + (-1)**i * combinations_calc(j, i) * (j-i)**n
+
+			supersum = supersum + (1/factorial(j)) * subsum
+
+		print(f"\nDer er {int(supersum)} måder at fordele {n} distinguishable objekter i {k} indistinguishable kasser.\n")
+
+	# Distinguishable objekter i distinguishable kasser
+	elif objects_dis == "y" and boxes_dis == "y":
+		print("Det er hurtigere at skrive formlen ind på en lommeregner.")
+	
+	# Indistinguishable objekter i indistinguishable kasser
+	else:
+		pass

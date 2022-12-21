@@ -14,10 +14,10 @@ function_dict = {
 		"7":["Primtal", "Er x et primtal?", primtal],
 		"8":["Matrix multiplikation", "Udregn resultatet af at multiplicere to matricer A og B.", matrix_multiplikation],
 		"9":["Boolsk produkt", "Udregn det boolske produkt af to matricer A og B.", boolsk_produkt],
-		"10":["Permutationer", "Udregn P(n, r).", permutationer],
-		"11":["Kombinationer", "Udregn C(n, r); n choose r.", kombinationer],
+		"10":["Permutationer", "Udregn P(n, r). Nu med repitioner! Jubii!", permutationer],
+		"11":["Kombinationer", "Udregn C(n, r); n choose r. Nu med repitioner! Jubii!", kombinationer],
 		"12":["Pascals trekant", "Find en eller flere rækker af Pascals trekant.", pascals_trekant],
-		"12":["Distinguishability", "Udregn måder at fordele n objekter i k kasser, afhængigt af distinguishability.", distinguishability]
+		"13":["Distinguishability", "Udregn måder at fordele n objekter i k kasser, afhængigt af distinguishability.", distinguishability]
 		}
 
 longest_name = ""
@@ -39,10 +39,10 @@ def print_functions() -> None:
 	""" Printer funktionerne brugeren kan bruge i
 	formattet -> id navn:	 beskrivelse.
 	"""
-	print("-"*100)
+	print("-"*120)
 	for f in function_dict.keys():
 		print(f.ljust(3), function_dict[f][0], ":".ljust(6+len(longest_name)-len(function_dict[f][0])), function_dict[f][1], sep="")
-		print("-"*100)
+		print("-"*120)
 	print()
 
 running = True
