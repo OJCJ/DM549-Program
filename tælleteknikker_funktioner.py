@@ -92,12 +92,12 @@ def pascals_trekant():
 	n = int(input("Hvad er dit n?\n").strip())
 
 	if mode == "t":
-		print(f"\nDen {n}'de række i Pascals trekant er:\n")
+		print(f"\nDe første {n} rækker af Pascals trekant er:\n")
 		
 		print(pascal_triangle(n))
 
 	elif mode == "r":
-		print(f"\nDen {n}'de række i Pascals trekant er:\n\n{' '.join([str(i) for i in pascal_calc(n)])}\n")
+		print(f"\nRække nr. {n} i Pascals trekant er:\n\n{' '.join([str(i) for i in pascal_calc(n)])}\n")
 
 
 def distinguishability() -> None:
