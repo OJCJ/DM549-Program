@@ -140,7 +140,7 @@ def distinguishability() -> None:
 
 	# Distinguishable objekter i distinguishable kasser
 	elif objects_dis == "y" and boxes_dis == "y":
-		print("Det er hurtigere at skrive formlen ind på en lommeregner.")
+		print("\nDet er hurtigere at skrive formlen ind på en lommeregner.\n")
 	
 	# Indistinguishable objekter i indistinguishable kasser
 	else:
