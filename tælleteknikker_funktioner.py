@@ -41,7 +41,22 @@ def pascal_triangle(n:int) -> str:
 		triangle = triangle + "\n"
 
 	return triangle
-		
+
+
+def n_objects_and_boxes(n: int) -> list[tuple[int]]:
+	""" Returnerer en liste af lister med måder man kan
+	fordele n indistinguishable objekter i n indistinguishable
+	kasser.
+	"""
+	ways = {(n, )}
+	for x in range(1, n):
+		for y in n_objects_and_boxes(n - x):
+			ways.add(tuple(sorted((x, ) + y)))
+    
+	ways = list(ways)
+
+	return ways
+
 
 ############################
 ### Brugerens funktioner ###
@@ -83,7 +98,7 @@ def pascals_trekant():
 	eller den n'de række i Pascals trekant.
 	"""
 	
-	mode = input("Hvilken mode vil du bruge?\nSkriv t hvis du vil have en trekant af de først n rækker.\nSkriv r hvis du kun vil have den n'de række.\n").strip()
+	mode = input("Hvilken mode vil du bruge?\nSkriv t hvis du vil have en trekant af de først n rækker.\nSkriv r hvis du kun vil have den n'te række.\n").strip()
 
 	if mode != "t" and mode != "r":
 		print("Ugyldig mode, prøv igen.")
@@ -140,8 +155,13 @@ def distinguishability() -> None:
 
 	# Distinguishable objekter i distinguishable kasser
 	elif objects_dis == "y" and boxes_dis == "y":
+		# Maybe implement if smart implementation is found.
 		print("\nDet er hurtigere at skrive formlen ind på en lommeregner.\n")
 	
 	# Indistinguishable objekter i indistinguishable kasser
 	else:
-		pass
+		full = n_objects_and_boxes(n)
+
+		answer = list(filter(lambda x: len(x) <= k, full))
+
+		print(f"\nDer er {len(answer)} måder at fordele {n} indistinguishable objekter i {k} indistinguishabe kasser.\n")
