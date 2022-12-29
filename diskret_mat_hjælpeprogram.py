@@ -14,8 +14,8 @@ function_dict = {
 		"7":["Primtal", "Er x et primtal?", primtal],
 		"8":["Matrix multiplikation", "Udregn resultatet af at multiplicere to matricer A og B.", matrix_multiplikation],
 		"9":["Boolsk produkt", "Udregn det boolske produkt af to matricer A og B.", boolsk_produkt],
-		"10":["Permutationer", "Udregn P(n, r). Nu med repitioner! Jubii!", permutationer],
-		"11":["Kombinationer", "Udregn C(n, r); n choose r. Nu med repitioner! Jubii!", kombinationer],
+		"10":["Permutationer", "Udregn P(n, r). Nu med repititioner! Jubii!", permutationer],
+		"11":["Kombinationer", "Udregn C(n, r); n choose r. Nu med repititioner! Jubii!", kombinationer],
 		"12":["Pascals trekant", "Find en eller flere rækker af Pascals trekant.", pascals_trekant],
 		"13":["Distinguishability", "Udregn måder at fordele n objekter i k kasser, afhængigt af distinguishability.", distinguishability]
 		}
@@ -51,7 +51,11 @@ while running:
 	print_functions()
 	cmd = input("Vælg en kommando til dit problem (fx. skriv 2 for gcd funktion): ").strip()
 	if cmd in function_dict.keys():
-		function_dict[cmd][2]()
+		try:
+			function_dict[cmd][2]()
+		except (ValueError, TypeError):
+			input("Ups, det er ikke et validt input. Tryk enter for at prøve igen :)")
+			continue
 		input("Tryk enter for at vælge en ny kommando (bemærk: dette sletter dit sidste resultat).")
 	else:
 		input("Ups, det er ikke en valid kommando. Tryk enter for at prøve igen :)")
