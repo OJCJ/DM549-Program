@@ -51,11 +51,7 @@ while running:
 	print_functions()
 	cmd = input("Vælg en kommando til dit problem (fx. skriv 2 for gcd funktion): ").strip()
 	if cmd in function_dict.keys():
-		try:
-			function_dict[cmd][2]()
-		except (ValueError, TypeError):
-			input("Ups, det er ikke et validt input. Tryk enter for at prøve igen :)")
-			continue
+		function_dict[cmd][2]()
 		input("Tryk enter for at vælge en ny kommando (bemærk: dette sletter dit sidste resultat).")
 	else:
 		input("Ups, det er ikke en valid kommando. Tryk enter for at prøve igen :)")
