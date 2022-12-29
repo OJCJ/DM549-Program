@@ -155,8 +155,8 @@ def distinguishability() -> None:
 
 	# Distinguishable objekter i distinguishable kasser
 	elif objects_dis == "y" and boxes_dis == "y":
-		# Maybe implement if smart implementation is found.
-		print("\nDet er hurtigere at skrive formlen ind på en lommeregner.\n")
+		# Implement if smart implementation is found.
+		print("\nKan desværre ikke hjælpe her; se formlen i 'Slides Week 49' på slide 21.\n")
 	
 	# Indistinguishable objekter i indistinguishable kasser
 	else:
