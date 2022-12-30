@@ -11,7 +11,7 @@ def dimensions(m: list[list]) -> list[int]:
     return list(map(lambda x: len(x), m))
 
 def is_matrix(m: list[list]) -> bool:
-	""" Returner om m er en matrix.
+	""" Returnerer om m er en matrix.
 	"""
 	return reduce(lambda x, y: x and y,
 				  map(lambda x: x == len(m[0]),
@@ -20,7 +20,7 @@ def is_matrix(m: list[list]) -> bool:
 
 
 def transpose(m: list[list]) -> list[list]:
-	""" Returnere matricen m, transponeret.
+	""" Returnerer matricen m, transponeret.
 	"""
 	return [[m[column][row] for column in range(len(m))]
 			for row in range(len(m[0]))]
