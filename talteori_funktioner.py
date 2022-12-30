@@ -188,7 +188,7 @@ def kongruenssystem() -> None:
 
 		# print m_k, M_k, y_k
 		for i in range(system_size):
-			print(f"m_{i+1}={m_list[i]}, M_{i+1}={M_list[i]}, y_{i+1}={y_list[i]}")
+			print(f"m{i+1} = {m_list[i]}, M{i+1} = {M_list[i]}, y{i+1} = {y_list[i]}")
 
 		# udregn x
 		x = 0
