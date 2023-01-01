@@ -99,6 +99,7 @@ Hvad er din matrix A?
 		for n in row:
 			print(f"{n} ", end="")
 		print()
+	print()
 
 
 def boolsk_produkt() -> None:
