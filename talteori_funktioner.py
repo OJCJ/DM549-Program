@@ -106,9 +106,9 @@ def løs_kongruens() -> None:
 	m = int(input("Hvad er dit m?\n").strip())
 
 	# hvis a og m er relativt primiske kan den multiplikative invers bruges
-	if gcd_args(a, m) == 1:
-		print(f"\nFor kongruensen {a}x ≡ {b} (mod {m}) er x = {(multiplikativ_invers_args(a, m)*b)%m}.\n")
-		return
+	#if gcd_args(a, m) == 1:
+	#	print(f"\nFor kongruensen {a}x ≡ {b} (mod {m}) er x = {(multiplikativ_invers_args(a, m)*b)%m}.\n")
+	#	return
 
 	modulo_list = []
 
@@ -129,8 +129,13 @@ def løs_kongruens() -> None:
 			if modulo_list[:length//2] == modulo_list[length//2:]:
 				print("\nDer er ingen løsning til denne kongruens.\n")
 				break
-		if (a*x)%m == b:
-			print(f"\nLøsningen til {a}x ≡ {b} (mod {m}) er x = {x}.\n")
+		if (a*x)%m == b and x != 1:
+			print(f"\nLøsningen til {a}x ≡ {b} (mod {m}) er x = {x}.")
+			if a in divisors(m):
+				add_ = m//a
+			else:
+				add_ = m
+			print(f"\nAndre løsninger findes ved {x} + k * {add_}, hvor k er et hvert heltal.\n")
 			break
 		else:
 			modulo_list = modulo_list + [(a*x)%m]
