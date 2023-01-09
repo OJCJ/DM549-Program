@@ -53,7 +53,7 @@ def matrix_multiplikation() -> None:
 \t1 2 3
 \t4 5 6
 \t7 8 9
-skulle du skrive "1 2 3,4 5 6,7 8 9."
+skulle du skrive "1 2 3,4 5 6,7 8 9".
 
 Hvad er din matrix A?
 ''').strip()
@@ -110,7 +110,7 @@ def boolsk_produkt() -> None:
 \t1 0 0
 \t1 0 1
 \t0 1 1
-skulle du skrive "1 0 0,1 0 1,0 1 1."
+skulle du skrive "1 0 0,1 0 1,0 1 1".
 
 Hvad er din matrix A?
 ''').strip()
