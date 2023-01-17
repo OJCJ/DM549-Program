@@ -214,7 +214,7 @@ def kongruenssystem() -> None:
 		"""
 		for x in range(1, lcm_list(m_list)+1):
 			solution_ = [(x % m_list[i]) == a_list[i] for i in range(len(a_list))]
-			solution_found = reduce(lambda a, b: a and b, solution_, True)
+			solution_found = reduce(lambda a, b: bool(a and b), solution_, True)
 
 			if solution_found:
 				print(f"\nx = {x}\n")
