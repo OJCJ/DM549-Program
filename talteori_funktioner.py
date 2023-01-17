@@ -213,10 +213,10 @@ def kongruenssystem() -> None:
 		derfor behøver værdier i det interval kun tjekkes, og hvis der ikke er en løsning, er der slet ikke en.
 		"""
 		for x in range(1, lcm_list(m_list)+1):
-			solution_ = [(x % m_list[i]) == a_list[i] for i in range(len(a_list))]
-			solution_found = reduce(lambda a, b: bool(a and b), solution_, True)
+			solutions = [(x % m_list[i]) == a_list[i] for i in range(len(a_list))]
+			all_solutions_true = reduce(lambda a, b: bool(a and b), solutions, True)
 
-			if solution_found:
+			if all_solutions_true:
 				print(f"\nx = {x}\n")
 				return
 		print(f"\nDer er ingen løsning til dit kongruenssystem.\n")
