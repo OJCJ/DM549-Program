@@ -67,7 +67,7 @@ def permutationer() -> None:
 	n = int(input("Hvad er dit n?\n").strip())
 	r = int(input("Hvad er dit r?\n").strip())
 
-	rep = input("Er det med repititioner (y/n)?\t(ikke det samme som indistinguishability)\n")
+	rep = input("Er det med repititioner (y/n)?\n")
 
 	if rep == 'y':
 		print(f"\n{n}^{r} = {n**r}\n")

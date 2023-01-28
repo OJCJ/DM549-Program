@@ -131,11 +131,7 @@ def løs_kongruens() -> None:
 				break
 		if (a*x)%m == b and x != 1:
 			print(f"\nLøsningen til {a}x ≡ {b} (mod {m}) er x = {x}.")
-			if a in divisors(m):
-				add_ = m//a
-			else:
-				add_ = m
-			print(f"\nAndre løsninger findes ved {x} + k * {add_}, hvor k er et hvert heltal.\n")
+			print(f"\nAndre løsninger findes ved {x} + {m//gcd_args(a, m)} * k, hvor k er et hvert heltal.\n")
 			break
 		else:
 			modulo_list = modulo_list + [(a*x)%m]
@@ -204,7 +200,7 @@ def kongruenssystem() -> None:
 
 		# print x
 		print(f"\nx = {x}")
-		print(f"\nAlle x = {x} + k * {m_product}, hvor k er et hvert heltal, er også løsninger (..., {x-(2*m_product)}, {x-m_product}, {x}, {x+m_product}, {x+(2*m_product)},...).\n")
+		print(f"\nAlle x = {x} + {m_product} * k, hvor k er et hvert heltal, er også løsninger (..., {x-(2*m_product)}, {x-m_product}, {x}, {x+m_product}, {x+(2*m_product)}, ...).\n")
 	
 	else: # hvis den kinesiske restklasse sætning kan bruges
 		"""
