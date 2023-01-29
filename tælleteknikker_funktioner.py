@@ -67,7 +67,7 @@ def permutationer() -> None:
 	n = int(input("Hvad er dit n?\n").strip())
 	r = int(input("Hvad er dit r?\n").strip())
 
-	rep = input("Er det med repititioner (y/n)?\t(ikke det samme som indistinguishability)\n")
+	rep = input("Er det med repititioner (y/n)?\t(ikke det samme som indistinguishability)\n").strip()
 
 	if rep == 'y':
 		print(f"\n{n}^{r} = {n**r}\n")
@@ -82,7 +82,7 @@ def kombinationer() -> None:
 	n = int(input("Hvor mange objekter er der?\n").strip())
 	r = int(input("Hvor mange kasser er der?\n").strip())
 
-	rep = input("Er det med repititioner (y/n)?\n")
+	rep = input("Er det med repititioner (y/n)?\n").strip()
 	
 	if rep == 'y':
 		#types = int(input("Hvor mange typer objekter er der?\n").strip())
